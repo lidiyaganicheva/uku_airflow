@@ -28,7 +28,7 @@ dag_args = {
     'owner': 'airflow',
 }
 
-#Add more cities: Kyiv, Kharkiv, Odesa, and Zhmerynka
+# Add more cities: Kyiv, Kharkiv, Odesa, and Zhmerynka
 CITIES = ["Lviv,UA", "Kyiv,UA", "Odesa,UA", "Kharkiv,UA", "Zhmerynka,UA"]
 
 
@@ -37,9 +37,9 @@ CITIES = ["Lviv,UA", "Kyiv,UA", "Odesa,UA", "Kharkiv,UA", "Zhmerynka,UA"]
 #####################
 def _process_weather(ti, city):
     info = ti.xcom_pull(f"weather_pipeline.extract_data_{city}").get("current")
-    timestamp = ti.execution_date  #datetime.fromtimestamp(info.get("dt")).isoformat()
+    timestamp = ti.execution_date
     temp = info.get("temp")
-    #Add humidity, cloudiness, and wind speed
+    # Add humidity, cloudiness, and wind speed
     humidity = info.get("humidity")
     cloudiness = info.get("clouds")
     wind_speed = info.get("wind_speed")
